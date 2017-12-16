@@ -74,13 +74,9 @@ class ExpenseManager(Cmd):
         self.db = dataset.connect(url)
         self.db.create_table('totals')
 
-        return super().preloop(*args, **kwargs)
-
     def postloop(self, *args, **kwargs):
         self.db.engine.dispose()
         deinit() # colorama shutdown
-
-        return super().postloop(*args, **kwargs)
 
     def do_use(self, arg):
         'Makes the given account active.'
