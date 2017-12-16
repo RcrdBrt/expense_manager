@@ -188,4 +188,4 @@ def start():
     ExpenseManager().cmdloop()
 
 if __name__ == '__main__':
-    ExpenseManager().cmdloop()
+    start()
