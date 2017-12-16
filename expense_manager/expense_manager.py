@@ -87,7 +87,7 @@ class ExpenseManager(Cmd):
         arg = arg.split()
         if arg:
             if not self.db['totals'].find_one(account_name=arg[0]):
-                self._col('Creating a new account named: {arg[0]}')
+                self._col(f'Creating a new account named: {arg[0]}')
                 self.db['totals'].insert(dict(
                     amount=0,
                     account_name=arg[0],
@@ -143,8 +143,11 @@ class ExpenseManager(Cmd):
         'Lists the name of the created accounts for the logged in username.'
         arg = arg.split()
         accounts = []
-        for i in self.db['totals']:
-            accounts.append(i['account_name'])
+        try:
+            for i in self.db['totals']:
+                accounts.append(i['account_name'])
+        except TypeError: # non-iterable
+            pass
         self._col(accounts, 'yellow')
 
     def do_inspect(self, arg):
