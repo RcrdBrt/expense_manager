@@ -1,0 +1,31 @@
+from setuptools import setup, find_packages
+import os
+
+version = '0.0.1'
+
+description = "A command-line expense manager and bank account logger."
+
+install_requires = [
+    'dataset',
+    'pysqlcipher3',
+    'cmd2',
+    'colorama',
+    'termcolor',
+    'tabulate',
+]
+
+setup(
+    name='Expense_Manager',
+    version=version,
+    url='https://github.com/RcrdBrt/expense_manager',
+    description=description,
+    author='Riccardo Berto',
+    author_email='riccardo@rcrdbrt.com',
+    packages=find_packages('expense_manager'),
+    entry_points="""
+    [console_scripts]
+    expense_manager = expense_manager.expense_manager:start
+    """,
+    install_requires=install_requires,
+    include_package_data=True,
+)
