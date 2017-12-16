@@ -25,9 +25,9 @@ setup(
     description=description,
     author='Riccardo Berto',
     author_email='riccardo@rcrdbrt.com',
-    packages=find_packages('expense_manager'),
-    #entry_points=entry_points,
-    scripts=['bin/expense_manager'],
+    packages=find_packages(),
+    entry_points=entry_points,
+    #scripts=['bin/expense_manager'],
     install_requires=install_requires,
     include_package_data=True,
 )
