@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.0.1'
+version = '0.0.2'
 
 description = "A command-line expense manager and bank account logger."
 
@@ -14,6 +14,10 @@ install_requires = [
     'tabulate',
 ]
 
+entry_points = {
+    'console_scripts': ['expense_manager=expense_manager.expense_manager:start'],
+}
+
 setup(
     name='Expense_Manager',
     version=version,
@@ -22,10 +26,7 @@ setup(
     author='Riccardo Berto',
     author_email='riccardo@rcrdbrt.com',
     packages=find_packages('expense_manager'),
-    entry_points="""
-    [console_scripts]
-    expense_manager = expense_manager.expense_manager:start
-    """,
+    entry_points=entry_points
     install_requires=install_requires,
     include_package_data=True,
 )
