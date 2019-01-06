@@ -66,7 +66,7 @@ class ExpenseManager(Cmd):
             print(e)
             sys.exit('Failed to create the data directory!')
         self.db_name = str(input('Username: ')).lower() + '_expense_manager.db'
-        url = 'sqlite://{}'.format(
+        url = 'sqlite:///{}'.format(
             join(self.db_path, self.db_name),
         )
         self.db = dataset.connect(url)
