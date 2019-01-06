@@ -4,7 +4,6 @@ import pathlib
 from os.path import join, exists, isdir
 import os
 import sys
-from getpass import getpass
 
 from cmd2 import Cmd
 import dataset
@@ -67,8 +66,7 @@ class ExpenseManager(Cmd):
             print(e)
             sys.exit('Failed to create the data directory!')
         self.db_name = str(input('Username: ')).lower() + '_expense_manager.db'
-        url = 'sqlite+pysqlcipher://:{}@/{}?cipher=aes-256-cfb&kdf_iter=64000'.format(
-            getpass(),
+        url = 'sqlite://{}'.format(
             join(self.db_path, self.db_name),
         )
         self.db = dataset.connect(url)
